@@ -1,5 +1,9 @@
 #Pycache
-__pycache__/*
+Proyecto/__pycache__/*
+api/__pycache__/*
+api/migrations/__pycache__/*
+api/services/__pycache__/*
+api/terms/__pycache__/*
 
 # virtualenv
 .venv
