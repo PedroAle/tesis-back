@@ -4,6 +4,7 @@ api/__pycache__/*
 api/migrations/__pycache__/*
 api/services/__pycache__/*
 api/terms/__pycache__/*
+api/usuarios/__pycache__/*
 
 # virtualenv
 .venv

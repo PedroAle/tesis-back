@@ -19,13 +19,18 @@ from django.conf.urls import url
 from api import views
 from api.terms import urls as terms
 from api.terms import views as views_terms
+from api.usuarios import views as views_usuarios
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('terms/', views_terms.get_terms),
     url('crear_term/', views_terms.create_terms),
     url('actualizar_term/', views_terms.update_term),
-    path('eliminar_term/<int:id>/', views_terms.delete_term)
+    path('eliminar_term/<int:id>/', views_terms.delete_term),
+    url('usuarios/', views_usuarios.get_usuarios),
+    url('crear_usuario/', views_usuarios.create_usuario),
+    url('actualizar_usuario/', views_usuarios.update_usuario),
+    path('eliminar_usuario/<int:id>/', views_usuarios.delete_usuario),
 ]
 
 """ url('crear_term/', view.create_term), """

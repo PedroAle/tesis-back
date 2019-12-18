@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "872203f2-cda0-4356-b2cb-34dbfc62e2ba",
+		"name": "Python - Tesis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TERMS",
+			"item": [
+				{
+					"name": "Crear TERM",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"term\": \"20201\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/crear_term/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_term",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar TERMS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/terms/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"terms",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar TERM",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\":{\n\t\t\"id\": 3,\n\t\t\"term\": \"Probando Actualizar Term\"\n\t}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_term/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_term",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar TERM",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_term/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_term",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "USUARIOS",
+			"item": [
+				{
+					"name": "Crear USUARIO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/crear_usuario/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar USUARIO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener USUARIOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/usuarios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar USUARIO",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1,\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_usuario/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

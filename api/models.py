@@ -22,6 +22,7 @@ class Usuario(models.Model):
     segundo_apellido = models.CharField(max_length=10, null=True)
     correo_ucab = models.CharField(max_length=250, null=True)
     correo_personal = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
     telefono_uno = models.CharField(max_length=11, null=True)
     telefono_dos = models.CharField(max_length=11, null=True)
     observaciones = models.TextField(null=True)
