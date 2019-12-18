@@ -1,5 +1,3 @@
-from django.http import JsonResponse
-
 def isEmpty(value):
     if(value == None or value == ''):
         return True
@@ -18,3 +16,10 @@ def successAction(status, msg):
         'status': status,
         'message': msg
     }
+
+def isNumber(value):
+    try:
+        val = int(value)
+        return True
+    except ValueError:
+        return False
