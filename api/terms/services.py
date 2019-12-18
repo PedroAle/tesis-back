@@ -1,9 +1,9 @@
-from sqlite_orm.database import Database
+
 from api.models import Term
-import sqlite3
 from sqlite3 import Error
-import json
 from api.services.connection import create_connection
+import sqlite3
+import json
 
 def obtener_terms():
     lista = {'terms':[]}
@@ -23,8 +23,9 @@ def obtener_terms():
         lista['terms'].append(term)
     return lista
 
-def crear_term():
+def crear_term(value):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
-    cur.execute("INSERT INTO api_term(term) VALUES ('2221')")
+    sql = "INSERT INTO api_term(term) VALUES ('{}')".format(value)
+    cur.execute(sql)
     conn.commit()
