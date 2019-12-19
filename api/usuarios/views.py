@@ -9,6 +9,17 @@ def get_usuarios(request):
     lista_usuarios = services.obtener_usuarios()
     return JsonResponse(lista_usuarios)
 
+def get_usuario(request,id):
+    if(request.method == "GET"):
+        if( isEmpty(id) or (not isNumber(id)) ):
+            return JsonResponse(generateError(400, 'Parámetros inválidos.'))
+        else: 
+            usuario = services.obtener_usuario(id)
+            return JsonResponse(usuario)
+    else:
+        return JsonResponse(generateError(401, 'Método HTTP inválido'))
+
+
 def create_usuario(request):
     if(request.method == "POST"):
         usuario = json.loads(request.body)
@@ -23,6 +34,7 @@ def create_usuario(request):
 def update_usuario(request):
     if(request.method == "PUT"):
         usuario = json.loads(request.body)
+        print(usuario)
         if( isEmpty(usuario['id']) or isEmpty(usuario['cedula']) or (not isNumber(usuario['id'])) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 

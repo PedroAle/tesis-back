@@ -28,6 +28,7 @@ urlpatterns = [
     url('actualizar_term/', views_terms.update_term),
     path('eliminar_term/<int:id>/', views_terms.delete_term),
     url('usuarios/', views_usuarios.get_usuarios),
+    path('usuario/<int:id>/', views_usuarios.get_usuario),
     url('crear_usuario/', views_usuarios.create_usuario),
     url('actualizar_usuario/', views_usuarios.update_usuario),
     path('eliminar_usuario/<int:id>/', views_usuarios.delete_usuario),

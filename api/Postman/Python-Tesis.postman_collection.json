@@ -139,7 +139,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"raw": "{\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"password\": \"123456\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,7 +214,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 1,\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"raw": "{\n\t\"id\": 2,\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"password\": \"654321\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -231,6 +231,26 @@
 							"path": [
 								"actualizar_usuario",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener USUARIO INDIVIDUAL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"usuario",
+								"2"
 							]
 						}
 					},
