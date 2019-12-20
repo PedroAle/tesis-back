@@ -20,6 +20,8 @@ from api import views
 from api.terms import urls as terms
 from api.terms import views as views_terms
 from api.usuarios import views as views_usuarios
+from api.propuestas import views as views_propuestas
+from api.trabajosdegrado import views as views_trabajosdegrado
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,8 +34,14 @@ urlpatterns = [
     url('crear_usuario/', views_usuarios.create_usuario),
     url('actualizar_usuario/', views_usuarios.update_usuario),
     path('eliminar_usuario/<int:id>/', views_usuarios.delete_usuario),
+    url('propuestas/', views_propuestas.get_propuestas),
+    path('propuesta/<int:id>/', views_propuestas.get_propuesta),
+    url('crear_propuesta/', views_propuestas.create_propuesta),
+    url('actualizar_propuesta/', views_propuestas.update_propuesta),
+    path('eliminar_propuesta/<int:id>/', views_propuestas.delete_propuesta),
+    url('trabajosdegrado/', views_trabajosdegrado.get_trabajosdegrado),
+    path('trabajodegrado/<int:id>/', views_trabajosdegrado.get_trabajodegrado),
+    url('crear_trabajodegrado/', views_trabajosdegrado.create_trabajodegrado),
+    url('actualizar_trabajodegrado/', views_trabajosdegrado.update_trabajodegrado),
+    path('eliminar_trabajodegrado/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
 ]
-
-""" url('crear_term/', view.create_term), """
-""" url('usuarios/', views.get_usuarios) """
-""" url('terms/', views.get_terms), """
