@@ -28,31 +28,70 @@ def obtener_defensas():
         lista['defensas'].append(defensa)
     return lista
 
-def obtener_propuesta(id):
+def obtener_defensa(id):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
-    sql = "SELECT * FROM api_propuesta WHERE id={0}".format(id)
+    sql = "SELECT * FROM api_defensa WHERE id={0}".format(id)
     cur.execute(sql)
  
     row = cur.fetchall()
-    propue = list(row[0])
-    print(propue)
+    defen = list(row[0])
+    print(defen)
 
-    sql = "SELECT term FROM api_term WHERE id={0}".format(propue[5])
+    sql = "SELECT fk_usuario_id FROM api_jurado WHERE fk_defensa_id={0}".format(id)
     cur.execute(sql)
     row = cur.fetchall()
-    term = list(row[0])
-    print(term)
+    jurado_1 = list(row[0])
+    jurado_2 = list(row[1])
+    jurado_3 = list(row[2])
+    print(jurado_1[0])
 
-    propuesta = {
-        'id': propue[0],
-        'codigo': propue[1],
-        'fecha_entrega':propue[2],
-        'titulo':propue[3],
-        'estatus':propue[4],
-        'fk_term': term[0]
+    sql = "SELECT primer_nombre, primer_apellido, cedula, tipo FROM api_usuario WHERE id={0}".format(jurado_1[0])
+    cur.execute(sql)
+    row = cur.fetchall()
+    jurado_1_datos = list(row[0])
+    print(jurado_1_datos)
+
+    sql = "SELECT primer_nombre, primer_apellido, cedula, tipo FROM api_usuario WHERE id={0}".format(jurado_2[0])
+    cur.execute(sql)
+    row = cur.fetchall()
+    jurado_2_datos = list(row[0])
+    print(jurado_2_datos)
+
+    sql = "SELECT primer_nombre, primer_apellido, cedula, tipo FROM api_usuario WHERE id={0}".format(jurado_3[0])
+    cur.execute(sql)
+    row = cur.fetchall()
+    jurado_3_datos = list(row[0])
+    print(jurado_3_datos)
+
+    defensa = {
+        'id': defen[0],
+        'codigo': defen[1],
+        'fecha_hora':defen[2],
+        'calificacion':defen[3],
+        'mencion_publicacion':defen[4],
+        'mencion_honorifica': defen[5],
+        'nota': defen[6],
+        'jurados': [{
+            'primer_nombre': jurado_1_datos[0],
+            'primer_apellido': jurado_1_datos[1],
+            'cedula': jurado_1_datos[2],
+            'tipo': ''
+        },
+        {
+            'primer_nombre': jurado_2_datos[0],
+            'primer_apellido': jurado_2_datos[1],
+            'cedula': jurado_2_datos[2],
+            'tipo': ''
+        },
+        {
+            'primer_nombre': jurado_2_datos[0],
+            'primer_apellido': jurado_2_datos[1],
+            'cedula': jurado_2_datos[2],
+            'tipo': 'Suplente'
+        }]
     }
-    return propuesta
+    return defensa
 
 def crear_defensa(defensa):
     conn = create_connection('db.sqlite3')
@@ -86,33 +125,81 @@ def crear_defensa(defensa):
     cur.execute(sql)
     conn.commit()
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_propuesta,id_jurado_uno)
+    sql = "SELECT id FROM api_defensa WHERE codigo='{0}'".format(defensa['codigo'])
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_defensa = row[0]
+    print(id_defensa)
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_defensa,id_jurado_uno)
     cur.execute(sql)
     conn.commit()
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_propuesta,id_jurado_dos)
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_defensa,id_jurado_dos)
     cur.execute(sql)
     conn.commit()
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',True)".format(id_propuesta,id_jurado_tres)
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',True)".format(id_defensa,id_jurado_tres)
     cur.execute(sql)
     conn.commit()
     
-def actualizar_propuesta(propuesta):
+def actualizar_defensa(defensa):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
-    sql = '''UPDATE api_propuesta 
-            SET codigo='{0}', fecha_entrega='{1}', titulo='{2}', estatus='{3}', fk_term_id='{4}'
-            WHERE id={5}'''.format(propuesta['codigo'],propuesta['fecha_entrega'],propuesta['titulo'],propuesta['estatus'],propuesta['fk_term'],propuesta['id'])
+    sql = '''UPDATE api_defensa
+            SET codigo='{0}', fecha_hora='{1}', calificacion={2}, mencion_publicacion={3}, mencion_honorifica={4}, nota={5}
+            WHERE id={6}'''.format(defensa['codigo'],defensa['fecha_hora'],defensa['calificacion'],defensa['mencion_publicacion'],defensa['mencion_honorifica'],defensa['nota'],defensa['id'])
     cur.execute(sql)
     conn.commit()
 
-def eliminar_propuesta(id):
+    if(not isEmpty(defensa['jurado_uno'])):
+
+        sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format(defensa['jurado_uno'])
+        cur.execute(sql)
+        row = list(cur.fetchall()[0])
+        id_jurado_uno = row[0]
+        print(id_jurado_uno)
+
+        sql = '''UPDATE api_jurado
+            SET fk_usuario_id={0}
+            WHERE fk_defensa_id={1}'''.format(id_jurado_uno,defensa['id'])
+        cur.execute(sql)
+        conn.commit()
+
+    if(not isEmpty(defensa['jurado_dos'])):
+
+        sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format(defensa['jurado_dos'])
+        cur.execute(sql)
+        row = list(cur.fetchall()[0])
+        id_jurado_dos = row[0]
+        print(id_jurado_dos)
+
+        sql = '''UPDATE api_jurado
+            SET fk_usuario_id={0}
+            WHERE fk_defensa_id={1}'''.format(id_jurado_dos,defensa['id'])
+        cur.execute(sql)
+        conn.commit()
+
+    if(not isEmpty(defensa['jurado_tres'])):
+
+        sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format(defensa['jurado_tres'])
+        cur.execute(sql)
+        row = list(cur.fetchall()[0])
+        id_jurado_tres = row[0]
+        print(id_jurado_tres)
+
+        sql = '''UPDATE api_jurado
+            SET fk_usuario_id={0}
+            WHERE fk_defensa_id={1}'''.format(id_jurado_tres,defensa['id'])
+        cur.execute(sql)
+        conn.commit()
+
+def eliminar_defensa(id):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
-    sql = "DELETE FROM api_propuesta WHERE id={0}".format(id)
+    sql = "DELETE FROM api_defensa WHERE id={0}".format(id)
     cur.execute(sql)
     conn.commit()
-    sql = "DELETE FROM api_usuariopropuesta WHERE id={0}".format(id)
+    sql = "DELETE FROM api_jurado WHERE fk_defensa_id={0}".format(id)
     cur.execute(sql)
     conn.commit()

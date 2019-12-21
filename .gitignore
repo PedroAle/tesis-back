@@ -8,7 +8,7 @@ api/usuarios/__pycache__/*
 api/propuestas/__pycache__/*
 api/trabajosdegrado/__pycache__/*
 api/defensas/__pycache__/*
-api/correcioness/__pycache__/*
+api/correciones/__pycache__/*
 
 # virtualenv
 .venv

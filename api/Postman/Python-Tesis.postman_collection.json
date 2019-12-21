@@ -77,7 +77,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"data\":{\n\t\t\"id\": 3,\n\t\t\"term\": \"Probando Actualizar Term\"\n\t}\n}",
+							"raw": "{\n\t\"data\":{\n\t\t\"id\": 1,\n\t\t\"term\": \"20202\"\n\t}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -242,7 +242,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/usuario/2",
+							"raw": "http://localhost:8000/usuario/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -250,7 +250,535 @@
 							"port": "8000",
 							"path": [
 								"usuario",
-								"2"
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PROPUESTAS",
+			"item": [
+				{
+					"name": "Obtener PROPUESTAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/propuestas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"propuestas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear PROPUESTA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\": \"1234\",\n\t\"fecha_entrega\": \"12/19/2019\",\n    \"titulo\": \"Titulo de la Propuesta de Postman\",\n    \"estatus\": \"Por Evaluar\",\n    \"fk_term\": 1,\n    \"estudiante_uno\": \"25846815\",\n    \"estudiante_dos\": \"\",\n    \"tutor_academico\": \"\",\n    \"tutor_empresarial\": \"\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/crear_propuesta/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_propuesta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener PROPUESTA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/propuesta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"propuesta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar PROPUESTA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_propuesta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_propuesta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar PROPUESTA",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 2,\n    \"codigo\": \"4321\",\n    \"fecha_entrega\": \"13/19/2019\",\n    \"titulo\": \"Titulo de la Propuesta Actualizada de Postman\",\n    \"estatus\": \"Diferida\",\n    \"fk_term\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_propuesta/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_propuesta",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TRABAJOS DE GRADO",
+			"item": [
+				{
+					"name": "Obtener TRABAJOS DE GRADO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/trabajosdegrado",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"trabajosdegrado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear TRABAJO DE GRADO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\": \"123456\",\n    \"titulo\": \"Titulo del Trabajo de Grado de Postman\",\n    \"nrc\": \"123\",\n    \"descriptores\": \"Aqui van los descriptores\",\n    \"categoria\": \"Categoria\",\n\t\"fecha_entrega\": \"12/19/2019\",\n\t\"nombre_empresa\": \"Empresa\",\n    \"estatus\": \"Por Evaluar\",\n    \"fk_propuesta\": 2,\n    \"fk_term\": 1\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/crear_trabajodegrado/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_trabajodegrado",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener TRABAJO DE GRADO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/trabajodegrado/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"trabajodegrado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar TRABAJO DE GRADO",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"codigo\": \"123456\",\n    \"titulo\": \"Titulo del Trabajo de Grado Actualizado de Postman\",\n    \"nrc\": \"321\",\n    \"descriptores\": \"Aqui van los descriptores\",\n    \"categoria\": \"Categoria Actualizada\",\n    \"fecha_entrega\": \"12/19/2019\",\n    \"nombre_empresa\": \"Empresa\",\n    \"estatus\": \"Por Evaluar\",\n    \"fk_propuesta\": 2,\n    \"fk_term\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_trabajodegrado/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_trabajodegrado",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar TRABAJO DE GRADO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_trabajodegrado/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_trabajodegrado",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "DEFENSAS",
+			"item": [
+				{
+					"name": "Obtener DEFENSAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/defensas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"defensas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear DEFENSA",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"codigo\": \"D12345\",\n\t\"fecha_hora\": \"12/11/2019:11:00AM\",\n\t\"calificacion\": 14.5,\n\t\"mencion_publicacion\": false,\n\t\"mencion_honorifica\": false,\n\t\"nota\": true,\n\t\"jurado_uno\": \"25846815\",\n\t\"jurado_dos\": \"25846815\",\n\t\"jurado_tres\": \"25846815\",\n\t\"trabajodegrado\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/crear_defensa/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_defensa",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar DEFENSA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_defensa/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_defensa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener DEFENSA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/defensa/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"defensa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar DEFENSA",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"codigo\": \"D12345A\",\n    \"fecha_hora\": \"12/11/2019:12:00AM\",\n    \"calificacion\": 16,\n    \"mencion_publicacion\": false,\n    \"mencion_honorifica\": false,\n    \"nota\": true,\n    \"jurado_uno\": \"\",\n    \"jurado_dos\": \"\",\n    \"jurado_tres\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_defensa/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_defensa",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CORRECCIONES",
+			"item": [
+				{
+					"name": "Obtener CORRECCIONES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/correcciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"correcciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear CORRECCION",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fecha\": \"12/11/2019\",\n\t\"defensa\": \"D12345A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/crear_correccion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"crear_correccion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar CORRECCION",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1,\n\t\"fecha\": \"01/01/2020\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/actualizar_correccion/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"actualizar_correccion",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar CORRECCION",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/eliminar_correccion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"eliminar_correccion",
+								"1"
 							]
 						}
 					},

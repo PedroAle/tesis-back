@@ -23,6 +23,7 @@ from api.usuarios import views as views_usuarios
 from api.propuestas import views as views_propuestas
 from api.trabajosdegrado import views as views_trabajosdegrado
 from api.defensas import views as views_defensas
+from api.correciones import views as views_correciones
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,8 +47,12 @@ urlpatterns = [
     url('actualizar_trabajodegrado/', views_trabajosdegrado.update_trabajodegrado),
     path('eliminar_trabajodegrado/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
     url('defensas/', views_defensas.get_defensas),
-    path('defensa/<int:id>/', views_trabajosdegrado.get_trabajodegrado),
+    path('defensa/<int:id>/', views_defensas.get_defensa),
     url('crear_defensa/', views_defensas.create_defensa),
-    url('actualizar_defensa/', views_trabajosdegrado.update_trabajodegrado),
-    path('eliminar_defensa/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
+    url('actualizar_defensa/', views_defensas.update_defensa),
+    path('eliminar_defensa/<int:id>/', views_defensas.delete_defensa),
+    url('correcciones/', views_correciones.get_correcciones),
+    url('crear_correccion/', views_correciones.create_correccion),
+    url('actualizar_correccion/', views_correciones.update_correccion),
+    path('eliminar_correccion/<int:id>/', views_correciones.delete_correccion),
 ]
