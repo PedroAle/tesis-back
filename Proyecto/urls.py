@@ -22,6 +22,7 @@ from api.terms import views as views_terms
 from api.usuarios import views as views_usuarios
 from api.propuestas import views as views_propuestas
 from api.trabajosdegrado import views as views_trabajosdegrado
+from api.defensas import views as views_defensas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,4 +45,9 @@ urlpatterns = [
     url('crear_trabajodegrado/', views_trabajosdegrado.create_trabajodegrado),
     url('actualizar_trabajodegrado/', views_trabajosdegrado.update_trabajodegrado),
     path('eliminar_trabajodegrado/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
+    url('defensas/', views_defensas.get_defensas),
+    path('defensa/<int:id>/', views_trabajosdegrado.get_trabajodegrado),
+    url('crear_defensa/', views_defensas.create_defensa),
+    url('actualizar_defensa/', views_trabajosdegrado.update_trabajodegrado),
+    path('eliminar_defensa/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
 ]

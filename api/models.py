@@ -79,9 +79,6 @@ class TrabajoDeGrado(models.Model):
     fk_term = models.ForeignKey(Term, on_delete=models.CASCADE)
     fk_propuesta = models.ForeignKey(Propuesta, on_delete=models.CASCADE)
 
-class Correcciones(models.Model):
-    fecha = models.DateTimeField()
-
 class Defensa(models.Model):
     codigo = models.CharField(max_length=250)
     fecha_hora = models.DateTimeField()
@@ -89,11 +86,14 @@ class Defensa(models.Model):
     mencion_publicacion = models.BooleanField()
     mencion_honorifica = models.BooleanField()
     nota = models.BooleanField()
-    fk_correciones = models.ForeignKey(Correcciones, on_delete=models.CASCADE)
     fk_trabajo_grado = models.ForeignKey(TrabajoDeGrado, on_delete=models.CASCADE)
 
 class Jurado(models.Model):
     fk_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fk_defensa = models.ForeignKey(Defensa, on_delete=models.CASCADE)
     suplente = models.BooleanField()
+
+class Correcciones(models.Model):
+    fecha = models.DateTimeField()
+    fk_defensa = models.ForeignKey(Defensa, on_delete=models.CASCADE)
 

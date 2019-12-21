@@ -126,3 +126,6 @@ def eliminar_propuesta(id):
     sql = "DELETE FROM api_propuesta WHERE id={0}".format(id)
     cur.execute(sql)
     conn.commit()
+    sql = "DELETE FROM api_usuariopropuesta WHERE id={0}".format(id)
+    cur.execute(sql)
+    conn.commit()
