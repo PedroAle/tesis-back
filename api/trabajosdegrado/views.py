@@ -3,8 +3,6 @@ from api.trabajosdegrado import services
 from api.services.utils import isEmpty, generateError, successAction, isNumber 
 import json
 
-# Create your views here.
-
 def get_trabajosdegrado(request):
     lista_trabajosdegrado = services.obtener_trabajosdegrado()
     return JsonResponse(lista_trabajosdegrado)
@@ -42,7 +40,7 @@ def update_trabajodegrado(request):
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
 def delete_trabajodegrado(request, id):
-    if(request.method == "GET"):
+    if(request.method == "DELETE"):
         if( isEmpty(id) or (not isNumber(id)) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 

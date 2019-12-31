@@ -61,6 +61,7 @@ def obtener_usuario(id):
     
 
 def crear_usuario(usuario):
+    print("LLEGOOO HASTA AQUI")
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
     sql = '''INSERT INTO 

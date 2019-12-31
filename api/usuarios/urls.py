@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import url
-from api.usuarios import views
-
+from api.usuarios import views as views_usuarios
 
 app_name = 'usuarios'
 
 urlpatterns = [
-   
+    path('', views_usuarios.get_usuarios),
+    path('<int:id>/', views_usuarios.get_usuario),
+    path('crear/', views_usuarios.create_usuario),
+    path('actualizar/', views_usuarios.update_usuario),
+    path('eliminar/<int:id>/', views_usuarios.delete_usuario),
 ]

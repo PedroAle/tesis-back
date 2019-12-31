@@ -27,7 +27,7 @@ def create_usuario(request):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 
             services.crear_usuario(usuario)
-            return JsonResponse(successAction(200, 'Se creo exitosamente'))
+            return JsonResponse(successAction(200, 'Se creo el usuario exitosamente'))
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
@@ -39,16 +39,16 @@ def update_usuario(request):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 
             services.actualizar_usuario(usuario)
-            return JsonResponse(successAction(200, 'Se actualizó el período exitosamente'))
+            return JsonResponse(successAction(200, 'Se actualizó el usuario exitosamente'))
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
 def delete_usuario(request, id):
-    if(request.method == "GET"):
+    if(request.method == "DELETE"):
         if( isEmpty(id) or (not isNumber(id)) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 
             services.eliminar_usuario(id)
-            return JsonResponse(successAction(200, 'Se eliminó el período exitosamente'))
+            return JsonResponse(successAction(200, 'Se eliminó el usuario exitosamente'))
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))

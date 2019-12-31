@@ -3,8 +3,6 @@ from api.correciones import services
 from api.services.utils import isEmpty, generateError, successAction, isNumber 
 import json
 
-# Create your views here.
-
 def get_correcciones(request):
     lista_correcciones = services.obtener_correcciones()
     return JsonResponse(lista_correcciones)
@@ -32,7 +30,7 @@ def update_correccion(request):
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
 def delete_correccion(request, id):
-    if(request.method == "GET"):
+    if(request.method == "DELETE"):
         if( isEmpty(id) or (not isNumber(id)) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 

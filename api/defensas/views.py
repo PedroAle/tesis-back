@@ -3,8 +3,6 @@ from api.defensas import services
 from api.services.utils import isEmpty, generateError, successAction, isNumber 
 import json
 
-# Create your views here.
-
 def get_defensas(request):
     lista_defensas = services.obtener_defensas()
     return JsonResponse(lista_defensas)
@@ -42,7 +40,7 @@ def update_defensa(request):
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
 def delete_defensa(request, id):
-    if(request.method == "GET"):
+    if(request.method == "DELETE"):
         if( isEmpty(id) or (not isNumber(id)) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 
