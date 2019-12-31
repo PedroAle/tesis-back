@@ -3,6 +3,19 @@ from django.utils.translation import gettext_lazy as _
 from sqlite_orm.table import BaseTable
 
 # Create your models here.
+class Rol(models.Model):
+
+    class TipoRol(models.TextChoices):
+        ADMINISTRADOR = 'AD', _('Administrador')
+        GESTOR = 'GT', _('Gestor')
+        INVITADO = 'IN', _('Invitado')
+
+    nombre_rol = models.CharField(
+        max_length=2,
+        choices=TipoRol.choices,
+        default=TipoRol.INVITADO
+    )
+
 class Usuario(models.Model):
 
     class TipoUsuario(models.TextChoices):
@@ -26,6 +39,7 @@ class Usuario(models.Model):
     telefono_uno = models.CharField(max_length=11, null=True)
     telefono_dos = models.CharField(max_length=11, null=True)
     observaciones = models.TextField(null=True)
+    fk_rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
 
 class Term(models.Model):
     term = models.CharField(max_length=6)
@@ -96,4 +110,3 @@ class Jurado(models.Model):
 class Correcciones(models.Model):
     fecha = models.DateTimeField()
     fk_defensa = models.ForeignKey(Defensa, on_delete=models.CASCADE)
-
