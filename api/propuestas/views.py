@@ -3,8 +3,6 @@ from api.propuestas import services
 from api.services.utils import isEmpty, generateError, successAction, isNumber 
 import json
 
-# Create your views here.
-
 def get_propuestas(request):
     lista_propuestas = services.obtener_propuestas()
     return JsonResponse(lista_propuestas)
@@ -42,7 +40,7 @@ def update_propuesta(request):
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
 def delete_propuesta(request, id):
-    if(request.method == "GET"):
+    if(request.method == "DELETE"):
         if( isEmpty(id) or (not isNumber(id)) ):
             return JsonResponse(generateError(400, 'Parámetros inválidos.'))
         else: 
