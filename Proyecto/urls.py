@@ -14,45 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
-from api import views
-from api.terms import urls as terms
-from api.terms import views as views_terms
-from api.usuarios import views as views_usuarios
-from api.propuestas import views as views_propuestas
-from api.trabajosdegrado import views as views_trabajosdegrado
-from api.defensas import views as views_defensas
-from api.correciones import views as views_correciones
+
+from api.terms import urls as urls_terms
+from api.usuarios import urls as urls_usuarios
+from api.propuestas import urls as urls_propuestas
+from api.trabajosdegrado import urls as urls_trabajosdegrado
+from api.defensas import urls as urls_defensas
+from api.correciones import urls as urls_correcciones
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('terms/', views_terms.get_terms),
-    url('crear_term/', views_terms.create_terms),
-    url('actualizar_term/', views_terms.update_term),
-    path('eliminar_term/<int:id>/', views_terms.delete_term),
-    url('usuarios/', views_usuarios.get_usuarios),
-    path('usuario/<int:id>/', views_usuarios.get_usuario),
-    url('crear_usuario/', views_usuarios.create_usuario),
-    url('actualizar_usuario/', views_usuarios.update_usuario),
-    path('eliminar_usuario/<int:id>/', views_usuarios.delete_usuario),
-    url('propuestas/', views_propuestas.get_propuestas),
-    path('propuesta/<int:id>/', views_propuestas.get_propuesta),
-    url('crear_propuesta/', views_propuestas.create_propuesta),
-    url('actualizar_propuesta/', views_propuestas.update_propuesta),
-    path('eliminar_propuesta/<int:id>/', views_propuestas.delete_propuesta),
-    url('trabajosdegrado/', views_trabajosdegrado.get_trabajosdegrado),
-    path('trabajodegrado/<int:id>/', views_trabajosdegrado.get_trabajodegrado),
-    url('crear_trabajodegrado/', views_trabajosdegrado.create_trabajodegrado),
-    url('actualizar_trabajodegrado/', views_trabajosdegrado.update_trabajodegrado),
-    path('eliminar_trabajodegrado/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
-    url('defensas/', views_defensas.get_defensas),
-    path('defensa/<int:id>/', views_defensas.get_defensa),
-    url('crear_defensa/', views_defensas.create_defensa),
-    url('actualizar_defensa/', views_defensas.update_defensa),
-    path('eliminar_defensa/<int:id>/', views_defensas.delete_defensa),
-    url('correcciones/', views_correciones.get_correcciones),
-    url('crear_correccion/', views_correciones.create_correccion),
-    url('actualizar_correccion/', views_correciones.update_correccion),
-    path('eliminar_correccion/<int:id>/', views_correciones.delete_correccion),
+    path('terms/', include(urls_terms)),
+    path('usuarios/', include(urls_usuarios)),
+    path('propuestas/', include(urls_propuestas)),
+    path('tg/', include(urls_trabajosdegrado)),
+    path('defensas/', include(urls_defensas)),
+    path('correcciones/', include(urls_correcciones))
 ]
