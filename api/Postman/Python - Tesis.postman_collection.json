@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "872203f2-cda0-4356-b2cb-34dbfc62e2ba",
+		"_postman_id": "3fb32c8b-26c5-4f54-a891-6fd905040d80",
 		"name": "Python - Tesis",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -30,13 +30,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/crear_term/",
+							"raw": "localhost:8000/terms/crear/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"crear_term",
+								"terms",
+								"crear",
 								""
 							]
 						}
@@ -77,7 +78,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"data\":{\n\t\t\"id\": 1,\n\t\t\"term\": \"20202\"\n\t}\n}",
+							"raw": "{\n\t\"data\": {\n\t\t\"id\": 2,\n\t\t\"term\": \"20215\"\n\t}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -85,14 +86,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/actualizar_term/",
+							"raw": "http://localhost:8000/terms/actualizar/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"actualizar_term",
+								"terms",
+								"actualizar",
 								""
 							]
 						}
@@ -105,15 +107,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/eliminar_term/4",
+							"raw": "http://localhost:8000/terms/eliminar/2/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"eliminar_term",
-								"4"
+								"terms",
+								"eliminar",
+								"2",
+								""
 							]
 						}
 					},
@@ -139,7 +143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"password\": \"123456\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"raw": "{\n\t\"cedula\": \"24087507\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Javier\",\n    \"segundo_nombre\": \"Adriano\",\n    \"primer_apellido\": \"Stifano\",\n    \"segundo_apellido\": \"Duran\",\n    \"correo_ucab\": \"jastifano.14\",\n    \"correo_personal\": \"javier@gmail.com\",\n    \"password\": \"123456\",\n    \"telefono_uno\": \"04242323288\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,13 +151,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/crear_usuario/",
+							"raw": "localhost:8000/usuarios/crear/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"crear_usuario",
+								"usuarios",
+								"crear",
 								""
 							]
 						}
@@ -166,15 +171,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/eliminar_usuario/2",
+							"raw": "http://localhost:8000/usuarios/eliminar/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"eliminar_usuario",
-								"2"
+								"usuarios",
+								"eliminar",
+								"1",
+								""
 							]
 						}
 					},
@@ -214,7 +221,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 2,\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"password\": \"654321\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"raw": "{\n\t\"id\": 1,\n\t\"cedula\": \"25846815\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Pedro\",\n    \"segundo_nombre\": \"Alejandro\",\n    \"primer_apellido\": \"Pacheco\",\n    \"segundo_apellido\": \"Tripi\",\n    \"correo_ucab\": \"papacheco.16\",\n    \"correo_personal\": \"pedro@gmail.com\",\n    \"password\": \"654321\",\n    \"telefono_uno\": \"02124983324\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\",\n    \"rol\": \"Estudiante\"\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,14 +229,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/actualizar_usuario/",
+							"raw": "http://localhost:8000/usuarios/actualizar/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"actualizar_usuario",
+								"usuarios",
+								"actualizar",
 								""
 							]
 						}
@@ -242,15 +250,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/usuario/1",
+							"raw": "http://localhost:8000/usuarios/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"usuario",
-								"1"
+								"usuarios",
+								"1",
+								""
 							]
 						}
 					},
@@ -268,14 +277,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/propuestas",
+							"raw": "http://localhost:8000/propuestas/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"propuestas"
+								"propuestas",
+								""
 							]
 						}
 					},
@@ -303,14 +313,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/crear_propuesta/",
+							"raw": "http://localhost:8000/propuestas/crear/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"crear_propuesta",
+								"propuestas",
+								"crear",
 								""
 							]
 						}
@@ -323,15 +334,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/propuesta/1",
+							"raw": "http://localhost:8000/propuestas/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"propuesta",
-								"1"
+								"propuestas",
+								"1",
+								""
 							]
 						}
 					},
@@ -343,15 +355,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/eliminar_propuesta/1",
+							"raw": "http://localhost:8000/propuestas/eliminar/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"eliminar_propuesta",
-								"1"
+								"propuestas",
+								"eliminar",
+								"1",
+								""
 							]
 						}
 					},
@@ -379,14 +393,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/actualizar_propuesta/",
+							"raw": "http://localhost:8000/propuesta/actualizar/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"actualizar_propuesta",
+								"propuesta",
+								"actualizar",
 								""
 							]
 						}
@@ -405,14 +420,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/trabajosdegrado",
+							"raw": "http://localhost:8000/tg/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"trabajosdegrado"
+								"tg",
+								""
 							]
 						}
 					},
@@ -440,14 +456,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/crear_trabajodegrado/",
+							"raw": "http://localhost:8000/tg/crear/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"crear_trabajodegrado",
+								"tg",
+								"crear",
 								""
 							]
 						}
@@ -460,15 +477,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/trabajodegrado/1",
+							"raw": "http://localhost:8000/tg/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"trabajodegrado",
-								"1"
+								"tg",
+								"1",
+								""
 							]
 						}
 					},
@@ -496,14 +514,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/actualizar_trabajodegrado/",
+							"raw": "http://localhost:8000/tg/actualizar/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"actualizar_trabajodegrado",
+								"tg",
+								"actualizar",
 								""
 							]
 						}
@@ -516,15 +535,17 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/eliminar_trabajodegrado/1",
+							"raw": "http://localhost:8000/tg/eliminar/1/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"eliminar_trabajodegrado",
-								"1"
+								"tg",
+								"eliminar",
+								"1",
+								""
 							]
 						}
 					},
@@ -542,14 +563,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/defensas",
+							"raw": "http://localhost:8000/defensas/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"defensas"
+								"defensas",
+								""
 							]
 						}
 					},
@@ -577,14 +599,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8000/crear_defensa/",
+							"raw": "http://localhost:8000/defensas/crear/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"crear_defensa",
+								"defensas",
+								"crear",
 								""
 							]
 						}
