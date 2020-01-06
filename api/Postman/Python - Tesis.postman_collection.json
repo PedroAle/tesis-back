@@ -143,7 +143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"cedula\": \"24087507\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Javier\",\n    \"segundo_nombre\": \"Adriano\",\n    \"primer_apellido\": \"Stifano\",\n    \"segundo_apellido\": \"Duran\",\n    \"correo_ucab\": \"jastifano.14\",\n    \"correo_personal\": \"javier@gmail.com\",\n    \"password\": \"123456\",\n    \"telefono_uno\": \"04242323288\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\"\n} ",
+							"raw": "{\n\t\"cedula\": \"24087507\",\n\t\"tipo\": \"ES\",\n    \"primer_nombre\": \"Javier\",\n    \"segundo_nombre\": \"Adriano\",\n    \"primer_apellido\": \"Stifano\",\n    \"segundo_apellido\": \"Duran\",\n    \"correo_ucab\": \"jastifano.14\",\n    \"correo_personal\": \"javier@gmail.com\",\n    \"password\": \"123456\",\n    \"telefono_uno\": \"04242323288\",\n    \"telefono_dos\": \"\",\n    \"observaciones\": \"\",\n    \"rol\": \"Invitado\"\n} ",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,7 +171,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/usuarios/eliminar/1/",
+							"raw": "http://localhost:8000/usuarios/eliminar/2/",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -180,7 +180,7 @@
 							"path": [
 								"usuarios",
 								"eliminar",
-								"1",
+								"2",
 								""
 							]
 						}
