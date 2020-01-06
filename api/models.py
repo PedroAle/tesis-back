@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from sqlite_orm.table import BaseTable
 
 # Create your models here.
 class Rol(models.Model):
