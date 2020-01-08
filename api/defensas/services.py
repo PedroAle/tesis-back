@@ -131,15 +131,15 @@ def crear_defensa(defensa):
     id_defensa = row[0]
     print(id_defensa)
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_defensa,id_jurado_uno)
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_uno)
     cur.execute(sql)
     conn.commit()
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',False)".format(id_defensa,id_jurado_dos)
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_dos)
     cur.execute(sql)
     conn.commit()
 
-    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',True)".format(id_defensa,id_jurado_tres)
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',1)".format(id_defensa,id_jurado_tres)
     cur.execute(sql)
     conn.commit()
     
