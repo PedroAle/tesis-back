@@ -10,4 +10,5 @@ urlpatterns = [
     path('crear/', views_usuarios.create_usuario),
     path('actualizar/', views_usuarios.update_usuario),
     path('eliminar/<int:id>/', views_usuarios.delete_usuario),
+    path('profesor/<int:id>/', views_usuarios.get_profesor_relacion),
 ]

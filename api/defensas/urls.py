@@ -10,4 +10,6 @@ urlpatterns = [
     path('crear/', views_defensas.create_defensa),
     path('actualizar/', views_defensas.update_defensa),
     path('eliminar/<int:id>/', views_defensas.delete_defensa),
+    path('noRealizadas/', views_defensas.get_defensas_no_realizadas),
+
 ]

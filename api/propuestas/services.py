@@ -26,6 +26,32 @@ def obtener_propuestas():
         lista['propuestas'].append(propuesta)
     return lista
 
+def obtener_propuestas_no_aprobada():
+    lista = {'propuestas':[]}
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+    sql = '''
+            select u.cedula as Cedula, u.primer_apellido || ' ' || u.segundo_apellido as Apellidos, u.primer_nombre || ' ' || u.segundo_nombre as Nombres, t.term, p.titulo, p.estatus
+            from api_usuario as u, api_term as t, api_propuesta as p, api_usuariopropuesta as up
+            where p.estatus <> 'Aprobada' and p.id = up.fk_propuesta_id and u.id = up.fk_usuario_id and p.fk_term_id = t.id and u.tipo = 'Estudiante'
+            order by u.cedula
+        '''
+    cur.execute(sql)
+ 
+    rows = cur.fetchall()
+
+    for row in rows:
+        propuesta = {
+            'cedula': row[0],
+            'apellidos': row[1],
+            'nombres': row[2],
+            'term':row[3],
+            'propuesta':row[4],
+            'estado': row[5]
+        }
+        lista['propuestas'].append(propuesta)
+    return lista
+
 def obtener_propuesta(id):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()

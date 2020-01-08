@@ -62,6 +62,32 @@ def obtener_trabajodegrado(id):
     }
     return trabajodegrado
 
+def obtener_trabajosdegrado_no_aprobados():
+    lista = {'trabajosdegrado':[]}
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+    sql = '''
+            select u.cedula as Cedula, u.primer_apellido || ' ' || u.segundo_apellido as Apellidos, u.primer_nombre || ' ' || u.segundo_nombre as Nombres, t.term, tg.titulo, tg.estatus
+            from api_usuario as u, api_term as t, api_propuesta as p, api_usuariopropuesta as up, api_trabajodegrado as tg
+            where tg.estatus <> 'Aprobada' and p.id = up.fk_propuesta_id and u.id = up.fk_usuario_id and p.fk_term_id = t.id and u.tipo = 'Estudiante' and p.id = tg.fk_propuesta_id
+            order by u.cedula
+        '''
+    cur.execute(sql)
+ 
+    rows = cur.fetchall()
+
+    for row in rows:
+        trabajodegrado = {
+            'cedula': row[0],
+            'apellidos': row[1],
+            'nombres': row[2],
+            'term':row[3],
+            'trabajodegrado':row[4],
+            'estado': row[5]
+        }
+        lista['trabajosdegrado'].append(trabajodegrado)
+    return lista
+
 def crear_trabajodegrado(trabajodegrado):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()

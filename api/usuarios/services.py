@@ -32,6 +32,57 @@ def obtener_usuarios():
         lista['usuarios'].append(usuario)
     return lista
 
+def obtener_relacionado_profesor(id):
+    lista = {'profesores':[]}
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+    sql = '''
+            select distinct ju.suplente, tg.titulo, tg.id, d.id
+            from api_usuario as u, api_propuesta as p, api_usuariopropuesta as up, api_defensa as d, api_jurado as ju, api_trabajodegrado as tg
+            where u.id = {0} and u.tipo = 'Profesor' and ju.fk_usuario_id = u.id and ju.fk_defensa_id = d.id and tg.id = d.fk_trabajo_grado_id
+        '''.format(id)
+    cur.execute(sql)
+ 
+    rows = cur.fetchall()
+
+    for row in rows:
+
+        if (row[0] == 1):
+            asignacion = 'Jurado Suplente'
+        else:
+            asignacion = 'Jurado'
+
+        profesor = {
+            'trabajo': row[1],
+            'asignacion': asignacion,
+            'id_propuesta': 0,
+            'id_trabajogrado': row[2],
+            'id_defensa': row[3]
+        }
+        lista['profesores'].append(profesor)
+
+    sql = '''
+            select distinct p.titulo, p.id
+            from api_usuario as u, api_propuesta as p, api_usuariopropuesta as up
+            where u.id = {0} and u.tipo = 'Profesor' and up.fk_usuario_id = u.id and up.fk_propuesta_id = p.id
+        '''.format(id)
+    cur.execute(sql)
+ 
+    rows = cur.fetchall()
+
+    for row in rows:
+
+        profesor = {
+            'trabajo': row[0],
+            'asignacion': 'Tutor Academico',
+            'id_propuesta': row[1],
+            'id_trabajogrado': 0,
+            'id_defensa': 0
+        }
+        lista['profesores'].append(profesor)
+
+    return lista
+
 def obtener_usuario(id):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()

@@ -17,6 +17,10 @@ def get_trabajodegrado(request,id):
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
+def get_trabajosdegrado_no_aprobados(request):
+    lista_trabajosdegrado = services.obtener_trabajosdegrado_no_aprobados()
+    return JsonResponse(lista_trabajosdegrado)
+
 def create_trabajodegrado(request):
     if(request.method == "POST"):
         trabajodegrado = json.loads(request.body)

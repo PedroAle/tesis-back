@@ -10,4 +10,6 @@ urlpatterns = [
     path('crear/', views_trabajosdegrado.create_trabajodegrado),
     path('actualizar/', views_trabajosdegrado.update_trabajodegrado),
     path('eliminar/<int:id>/', views_trabajosdegrado.delete_trabajodegrado),
+    path('noAprobadas/', views_trabajosdegrado.get_trabajosdegrado_no_aprobados),
+
 ]

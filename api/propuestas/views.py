@@ -17,6 +17,10 @@ def get_propuesta(request,id):
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
+def get_propuestas_no_aprobadas(request):
+    lista_propuestas = services.obtener_propuestas_no_aprobada()
+    return JsonResponse(lista_propuestas)
+
 def create_propuesta(request):
     if(request.method == "POST"):
         propuesta = json.loads(request.body)

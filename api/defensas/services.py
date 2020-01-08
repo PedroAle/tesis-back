@@ -93,6 +93,32 @@ def obtener_defensa(id):
     }
     return defensa
 
+def obtener_defensas_no_realizadas():
+    lista = {'defensas':[]}
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+    sql = '''
+            select u.cedula as Cedula, u.primer_apellido || ' ' || u.segundo_apellido as Apellidos, u.primer_nombre || ' ' || u.segundo_nombre as Nombres, t.term, tg.titulo, d.fecha_hora
+            from api_usuario as u, api_term as t, api_propuesta as p, api_usuariopropuesta as up, api_trabajodegrado as tg, api_defensa as d
+            where tg.estatus = 'Aprobada' and p.id = up.fk_propuesta_id and u.id = up.fk_usuario_id and p.fk_term_id = t.id and u.tipo = 'Estudiante' and p.id = tg.fk_propuesta_id and d.fk_trabajo_grado_id = tg.id and datetime('now') < d.fecha_hora
+            order by u.cedula
+        '''
+    cur.execute(sql)
+ 
+    rows = cur.fetchall()
+
+    for row in rows:
+        defensa = {
+            'cedula': row[0],
+            'apellidos': row[1],
+            'nombres':row[2],
+            'term':row[3],
+            'trabajodegrado':row[4],
+            'fecha_hora': row[5]
+        }
+        lista['defensas'].append(defensa)
+    return lista
+
 def crear_defensa(defensa):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()

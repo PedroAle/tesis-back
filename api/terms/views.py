@@ -7,6 +7,10 @@ def get_terms(request):
     lista_terms = services.obtener_terms()
     return JsonResponse(lista_terms)
 
+def get_trabajos_by_terms(request,id):
+    lista_terms = services.obtener_trabajos_by_term(id)
+    return JsonResponse(lista_terms)
+
 def create_terms(request):
     if(request.method == "POST"):
         term = json.loads(request.body)['term']

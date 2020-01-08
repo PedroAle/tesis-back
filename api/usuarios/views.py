@@ -19,6 +19,16 @@ def get_usuario(request,id):
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
+def get_profesor_relacion(request,id):
+    if(request.method == "GET"):
+        if( isEmpty(id) or (not isNumber(id)) ):
+            return JsonResponse(generateError(400, 'Parámetros inválidos.'))
+        else: 
+            usuario = services.obtener_relacionado_profesor(id)
+            return JsonResponse(usuario)
+    else:
+        return JsonResponse(generateError(401, 'Método HTTP inválido'))
+
 
 def create_usuario(request):
     if(request.method == "POST"):

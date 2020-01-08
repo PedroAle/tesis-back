@@ -228,7 +228,7 @@ def insertar_defensa():
     id_jurado_tres = row[0]
     print(id_jurado_tres)
 
-    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D6879','22/11/2013:02:00PM',15,0,0,1,id_trabajodegrado)
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D6879','2013-11-22 14:00:00',15,0,0,1,id_trabajodegrado)
     cur.execute(sql)
     conn.commit()
 
@@ -276,7 +276,7 @@ def insertar_defensa():
     id_jurado_tres = row[0]
     print(id_jurado_tres)
 
-    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','14/03/2016:11:00AM',19.6,0,1,1,id_trabajodegrado)
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2016-03-14 11:00:00',19.6,0,1,1,id_trabajodegrado)
     cur.execute(sql)
     conn.commit()
 

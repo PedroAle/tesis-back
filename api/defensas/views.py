@@ -17,6 +17,10 @@ def get_defensa(request,id):
     else:
         return JsonResponse(generateError(401, 'Método HTTP inválido'))
 
+def get_defensas_no_realizadas(request):
+    lista_defensas = services.obtener_defensas_no_realizadas()
+    return JsonResponse(lista_defensas)
+
 def create_defensa(request):
     if(request.method == "POST"):
         defensa = json.loads(request.body)

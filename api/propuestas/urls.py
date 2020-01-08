@@ -9,5 +9,7 @@ urlpatterns = [
     path('<int:id>/', views_propuestas.get_propuesta),
     path('crear/', views_propuestas.create_propuesta),
     path('actualizar/', views_propuestas.update_propuesta),
-    path('eliminar/<int:id>/', views_propuestas.delete_propuesta)
+    path('eliminar/<int:id>/', views_propuestas.delete_propuesta),
+    path('noAprobadas/', views_propuestas.get_propuestas_no_aprobadas),
+
 ]
