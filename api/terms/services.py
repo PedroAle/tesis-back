@@ -79,6 +79,51 @@ def obtener_trabajos_by_term(id):
     
     return lista
 
+def estadiaticas_by_term(id):
+
+    lista = {'estadisticas':[]}
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+
+    sql = "select avg(d.calificacion) as Promedio  from api_term as t, api_defensa as d, api_trabajodegrado as tg  where t.id={0} and t.id = tg.fk_term_id and tg.id = d.fk_trabajo_grado_id".format(id)
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    media_aritmetica = row[0]
+
+    sql = "SELECT (max(d.calificacion)+min(d.calificacion))/2 as mediana from api_term as t, api_defensa as d, api_trabajodegrado as tg  where t.id={0} and t.id = tg.fk_term_id and tg.id = d.fk_trabajo_grado_id".format(id)
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    mediana = row[0]
+
+    sql = "SELECT (AVG(d.calificacion*d.calificacion) - AVG(d.calificacion)*AVG(d.calificacion))/2 FROM api_defensa as d, api_trabajodegrado as tg, api_term as t where t.id={0} and t.id=tg.fk_term_id and tg.id=d.fk_trabajo_grado_id".format(id)
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    desviacion_estandar = row[0]
+
+    sql = '''
+            SELECT d.calificacion, COUNT(d.calificacion) as Veces 
+            from api_defensa as d, api_trabajodegrado as tg, api_term as t 
+            where t.id={0} and t.id=tg.fk_term_id and tg.id=d.fk_trabajo_grado_id
+            group by d.calificacion
+            ORDER by COUNT(d.calificacion) DESC
+            LIMIT 1    
+        '''.format(id)
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    moda = row[0]
+
+    obj = {
+            'media_aritmetica': media_aritmetica,
+            'mediana': mediana,
+            'moda': moda,
+            'desviacion_estandar': desviacion_estandar
+        }
+    
+    lista['estadisticas'].append(obj)
+
+    return lista
+
+
 def crear_term(value):
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()

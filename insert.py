@@ -27,6 +27,24 @@ def insertar_usuarios():
 
     sql = '''INSERT INTO 
             api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('511821','Profesor','Mercedes','','Martinez','Rondon','mrondon@ucab.edu.ve','mercedesmr@gmail.com','m1234','04148903567','','','Gestor')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('14532372','Profesor','Liliana','Glenis','Martinez','Landazabul','lglenis@ucab.edu.ve','lilianag@gmail.com','lili456','04123456789','','','Gestor')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('6123724','Profesor','Ludwig','Antonio','Vera','Rojas','lvera@ucab.edu.ve','lrojas@gmail.com','la578','04160235879','','','Gestor')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
             VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('13552794','Externo','Danny','Yoxelin','Moreno','Rodriguez','','yoxelinmr@gmail.com','y928','04245648352','','','Invitado')
     cur.execute(sql)
     conn.commit()
@@ -55,6 +73,25 @@ def insertar_usuarios():
     cur.execute(sql)
     conn.commit()
 
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('23315675','Estudiante','Daniel','Alejandro','Asmat','Sanchez','daasmat@est.ucab.edu.ve','danielass@gmail.com','da543','0412543720','','','Invitado')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('20820139','Estudiante','Bassil','German','Dacostas','Frias','bgdacostas@est.ucab.edu.ve','germanfrias@gmail.com','df345','04242345675','','','Invitado')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = '''INSERT INTO 
+            api_usuario(cedula,tipo,primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,correo_ucab,correo_personal,password,telefono_uno,telefono_dos,observaciones,rol) 
+            VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')'''.format('21115533','Estudiante','Luis','Fernando','Contreras','Manzanilla','lfcontreras@est.ucab.edu.ve','luisfercontreras@gmail.com','lc456','04148923452','','','Invitado')
+    cur.execute(sql)
+    conn.commit()
+
+
     conn.close()
 
 def insertar_term():
@@ -65,6 +102,18 @@ def insertar_term():
     conn.commit()
 
     sql = "INSERT INTO api_term(term) VALUES ('{}')".format('201343')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_term(term) VALUES ('{}')".format('201454')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_term(term) VALUES ('{}')".format('201640')
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_term(term) VALUES ('{}')".format('201431')
     cur.execute(sql)
     conn.commit()
 
@@ -164,6 +213,125 @@ def insertar_propuesta():
     cur.execute(sql)
     conn.commit()
 
+    ######################################
+
+    sql = "SELECT id FROM api_term WHERE term='{0}'".format('201454')    
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_term = row[0]
+    print(id_term)
+
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('5467','20/01/2014','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','Aprobada',id_term)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_propuesta WHERE titulo='{0}'".format('METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_propuesta = row[0]
+    print(id_propuesta)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('23315675')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_estudiante_uno = row[0]
+    print(id_estudiante_uno)
+
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_estudiante_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('511821')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_tutor_academico = row[0]
+    
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_tutor_academico)
+    cur.execute(sql)
+    conn.commit()
+
+    ###################################
+
+    sql = "SELECT id FROM api_term WHERE term='{0}'".format('201640')    
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_term = row[0]
+    print(id_term)
+
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('2930','12/03/2016','ANÁLISIS, DISEÑO E IMPLEMENTACIÓN DE SOFTWARE PARA EL MANEJO DE LLAMADAS TELEFÓNICAS SOBRE REDES IP','Rechazada',id_term)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_propuesta WHERE titulo='{0}'".format('ANÁLISIS, DISEÑO E IMPLEMENTACIÓN DE SOFTWARE PARA EL MANEJO DE LLAMADAS TELEFÓNICAS SOBRE REDES IP')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_propuesta = row[0]
+    print(id_propuesta)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('20820139')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_estudiante_uno = row[0]
+    print(id_estudiante_uno)
+
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_estudiante_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('14532372')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_tutor_academico = row[0]
+    
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_tutor_academico)
+    cur.execute(sql)
+    conn.commit()
+
+    #############################
+
+    sql = "SELECT id FROM api_term WHERE term='{0}'".format('201431')    
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_term = row[0]
+    print(id_term)
+
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('1095','01/06/2014','SISTEMA DE INFORMACIÓN CONTABLE ORIENTADO A LA PEQUEÑA Y MICROEMPRESA','Rechazada',id_term)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_propuesta WHERE titulo='{0}'".format('SISTEMA DE INFORMACIÓN CONTABLE ORIENTADO A LA PEQUEÑA Y MICROEMPRESA')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_propuesta = row[0]
+    print(id_propuesta)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('21115533')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_estudiante_uno = row[0]
+    print(id_estudiante_uno)
+
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_estudiante_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('8634590')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_tutor_academico = row[0]
+    
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_tutor_academico)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('6123724')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_tutor_empresarial = row[0]
+    
+    sql = "INSERT INTO api_usuariopropuesta(fk_propuesta_id,fk_usuario_id) VALUES ('{0}','{1}')".format(id_propuesta,id_tutor_empresarial)
+    cur.execute(sql)
+    conn.commit()
     conn.close()
 
 def insertar_trabajodegrado():
@@ -180,7 +348,7 @@ def insertar_trabajodegrado():
     row = list(cur.fetchall()[0])
     id_term = row[0]
 
-    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('6879','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','25048','','Breve descripcion de  la tesis','12/06/2013','','Aprobada',id_propuesta,id_term)
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG6879','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','25048','','Breve descripcion de  la tesis','12/06/2013','','Aprobada',id_propuesta,id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -194,7 +362,21 @@ def insertar_trabajodegrado():
     row = list(cur.fetchall()[0])
     id_term = row[0]
 
-    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('4367','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','27650','','Breve descripcion de la tesis','03/11/2015','Cuadrado','Aprobada',id_propuesta,id_term)
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG4367','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','27650','','Breve descripcion de la tesis','03/11/2015','Cuadrado','Aprobada',id_propuesta,id_term)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_propuesta WHERE titulo='{0}'".format('METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_propuesta = row[0]
+
+    sql = "SELECT fk_term_id FROM api_propuesta WHERE titulo='{0}'".format('METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_term = row[0]
+
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG7543','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','24509','','Breve descripcion de la tesis','20/07/2014','','Rechazada',id_propuesta,id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -204,7 +386,7 @@ def insertar_defensa():
     conn = create_connection('db.sqlite3')
     cur = conn.cursor()
 
-    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('6879')
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG6879')
     cur.execute(sql)
     row = list(cur.fetchall()[0])
     id_trabajodegrado = row[0]
@@ -228,7 +410,7 @@ def insertar_defensa():
     id_jurado_tres = row[0]
     print(id_jurado_tres)
 
-    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D6879','2013-11-22 14:00:00',15,0,0,1,id_trabajodegrado)
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D6879','2020-07-22 14:00:00',15,0,0,1,id_trabajodegrado)
     cur.execute(sql)
     conn.commit()
 
@@ -252,7 +434,7 @@ def insertar_defensa():
 
     #############
 
-    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('4367')
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG4367')
     cur.execute(sql)
     row = list(cur.fetchall()[0])
     id_trabajodegrado = row[0]
@@ -277,6 +459,198 @@ def insertar_defensa():
     print(id_jurado_tres)
 
     sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2016-03-14 11:00:00',19.6,0,1,1,id_trabajodegrado)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_defensa WHERE codigo='{0}'".format('D4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_defensa = row[0]
+    print(id_defensa)
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_dos)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',1)".format(id_defensa,id_jurado_tres)
+    cur.execute(sql)
+    conn.commit()
+
+    #############
+
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_trabajodegrado = row[0]
+    print(id_trabajodegrado)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('6234543')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_uno = row[0]
+    print(id_jurado_uno)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('4582205')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_dos = row[0]
+    print(id_jurado_dos)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('8634590')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_tres = row[0]
+    print(id_jurado_tres)
+
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2016-03-14 11:00:00',13,0,1,1,id_trabajodegrado)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_defensa WHERE codigo='{0}'".format('D4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_defensa = row[0]
+    print(id_defensa)
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_dos)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',1)".format(id_defensa,id_jurado_tres)
+    cur.execute(sql)
+    conn.commit()
+
+    #############
+
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_trabajodegrado = row[0]
+    print(id_trabajodegrado)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('6234543')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_uno = row[0]
+    print(id_jurado_uno)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('4582205')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_dos = row[0]
+    print(id_jurado_dos)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('8634590')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_tres = row[0]
+    print(id_jurado_tres)
+
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2016-03-14 11:00:00',15,0,1,1,id_trabajodegrado)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_defensa WHERE codigo='{0}'".format('D4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_defensa = row[0]
+    print(id_defensa)
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_dos)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',1)".format(id_defensa,id_jurado_tres)
+    cur.execute(sql)
+    conn.commit()
+
+    #############
+
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_trabajodegrado = row[0]
+    print(id_trabajodegrado)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('6234543')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_uno = row[0]
+    print(id_jurado_uno)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('4582205')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_dos = row[0]
+    print(id_jurado_dos)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('8634590')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_tres = row[0]
+    print(id_jurado_tres)
+
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2016-03-14 11:00:00',17,0,1,1,id_trabajodegrado)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "SELECT id FROM api_defensa WHERE codigo='{0}'".format('D4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_defensa = row[0]
+    print(id_defensa)
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_uno)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',0)".format(id_defensa,id_jurado_dos)
+    cur.execute(sql)
+    conn.commit()
+
+    sql = "INSERT INTO api_jurado(fk_defensa_id,fk_usuario_id,suplente) VALUES ('{0}','{1}',1)".format(id_defensa,id_jurado_tres)
+    cur.execute(sql)
+    conn.commit()
+
+    #############
+
+    sql = "SELECT id FROM api_trabajodegrado WHERE codigo='{0}'".format('TG4367')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_trabajodegrado = row[0]
+    print(id_trabajodegrado)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('6234543')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_uno = row[0]
+    print(id_jurado_uno)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('4582205')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_dos = row[0]
+    print(id_jurado_dos)
+
+    sql = "SELECT id FROM api_usuario WHERE cedula='{0}'".format('8634590')
+    cur.execute(sql)
+    row = list(cur.fetchall()[0])
+    id_jurado_tres = row[0]
+    print(id_jurado_tres)
+
+    sql = "INSERT INTO api_defensa(codigo,fecha_hora,calificacion,mencion_publicacion,mencion_honorifica,nota,fk_trabajo_grado_id) VALUES ('{0}','{1}',{2},{3},{4},{5},{6})".format('D4367','2015-12-04 11:00:00',17,0,1,1,id_trabajodegrado)
     cur.execute(sql)
     conn.commit()
 
