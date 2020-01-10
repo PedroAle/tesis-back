@@ -129,7 +129,7 @@ def insertar_propuesta():
     id_term = row[0]
     print(id_term)
 
-    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('2357','12/01/2013','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','Aprobada',id_term)
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('2357','2013-01-12','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','Aprobada',id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -166,7 +166,7 @@ def insertar_propuesta():
     id_term = row[0]
     print(id_term)
 
-    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('8985','03/05/2015','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','Aprobada',id_term)
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('8985','2015-05-03','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','Aprobada',id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -221,7 +221,7 @@ def insertar_propuesta():
     id_term = row[0]
     print(id_term)
 
-    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('5467','20/01/2014','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','Aprobada',id_term)
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('5467','2014-01-02','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','Aprobada',id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -258,7 +258,7 @@ def insertar_propuesta():
     id_term = row[0]
     print(id_term)
 
-    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('2930','12/03/2016','ANÁLISIS, DISEÑO E IMPLEMENTACIÓN DE SOFTWARE PARA EL MANEJO DE LLAMADAS TELEFÓNICAS SOBRE REDES IP','Rechazada',id_term)
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('2930','2016-03-12','ANÁLISIS, DISEÑO E IMPLEMENTACIÓN DE SOFTWARE PARA EL MANEJO DE LLAMADAS TELEFÓNICAS SOBRE REDES IP','Rechazada',id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -295,7 +295,7 @@ def insertar_propuesta():
     id_term = row[0]
     print(id_term)
 
-    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('1095','01/06/2014','SISTEMA DE INFORMACIÓN CONTABLE ORIENTADO A LA PEQUEÑA Y MICROEMPRESA','Rechazada',id_term)
+    sql = "INSERT INTO api_propuesta(codigo,fecha_entrega,titulo,estatus,fk_term_id) VALUES ('{0}','{1}','{2}','{3}',{4})".format('1095','2014-06-01','SISTEMA DE INFORMACIÓN CONTABLE ORIENTADO A LA PEQUEÑA Y MICROEMPRESA','Rechazada',id_term)
     cur.execute(sql)
     conn.commit()
 
