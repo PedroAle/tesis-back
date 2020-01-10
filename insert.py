@@ -348,7 +348,7 @@ def insertar_trabajodegrado():
     row = list(cur.fetchall()[0])
     id_term = row[0]
 
-    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG6879','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','25048','','Breve descripcion de  la tesis','12/06/2013','','Aprobada',id_propuesta,id_term)
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG6879','ALGORITMO GENÉTICO QUE RESUELVE EL PROBLEMA DE CORTES EN UNA DIMENSIÓN','25048','','Breve descripcion de  la tesis','2013-06-12','','Aprobada',id_propuesta,id_term)
     cur.execute(sql)
     conn.commit()
 
@@ -376,7 +376,7 @@ def insertar_trabajodegrado():
     row = list(cur.fetchall()[0])
     id_term = row[0]
 
-    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG7543','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','24509','','Breve descripcion de la tesis','20/07/2014','','Rechazada',id_propuesta,id_term)
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG7543','METODOLOGÍA PARA LA IMPLEMENTACIÓN DE UN SISTEMA ORIENTADO A LA AUTOMATIZACIÓN DE PROCESOS DE VENTA PARA INSTITUCIONES FINANCIERAS','24509','','Breve descripcion de la tesis','2014-07-20','','Rechazada',id_propuesta,id_term)
     cur.execute(sql)
     conn.commit()
 
