@@ -138,3 +138,26 @@ def eliminar_usuario(id):
     sql = "DELETE FROM api_usuario WHERE id={0}".format(id)
     cur.execute(sql)
     conn.commit()
+
+def login(obj):
+
+    print(obj['correo'])
+    conn = create_connection('db.sqlite3')
+    cur = conn.cursor()
+
+    sql = "select u.id, u.primer_apellido || ' ' || u.segundo_apellido as Apellidos, u.primer_nombre || ' ' || u.segundo_nombre as Nombres, u.rol FROM api_usuario as u WHERE u.correo_personal='{0}' and u.password='{1}'".format(obj['correo'],obj['password'])
+    cur.execute(sql)
+
+    row = cur.fetchall()
+    user = list(row[0])
+    print(user)
+
+    usuario = {
+        'id': user[0],
+        'apellidos': user[1],
+        'nombres': user[2],
+        'rol': user[3]
+    }
+    return usuario
+
+    conn.commit()
