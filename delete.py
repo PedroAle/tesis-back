@@ -40,6 +40,10 @@ def delete_data():
     cur.execute(sql)
     conn.commit()
 
+    sql = '''update sqlite_sequence SET SEQ=0'''
+    cur.execute(sql)
+    conn.commit()
+
     conn.close()
 
 delete_data()
