@@ -362,7 +362,7 @@ def insertar_trabajodegrado():
     row = list(cur.fetchall()[0])
     id_term = row[0]
 
-    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG4367','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','27650','','Breve descripcion de la tesis','03/11/2015','Cuadrado','Aprobada',id_propuesta,id_term)
+    sql = "INSERT INTO api_trabajodegrado(codigo,titulo,nrc,descriptores,categoria,fecha_entrega,nombre_empresa,estatus,fk_propuesta_id,fk_term_id) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9})".format('TG4367','ANÁLISIS Y DISEÑO DE UN SISTEMA DE INFORMACIÓN PARA MRP','27650','','Breve descripcion de la tesis','2015-11-03','Cuadrado','Aprobada',id_propuesta,id_term)
     cur.execute(sql)
     conn.commit()
 
